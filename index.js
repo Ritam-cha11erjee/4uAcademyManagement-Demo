@@ -2,7 +2,7 @@ const express = require('express'); //imported express
 const cors = require('cors'); //allowes cross origin communication (b/w diff domains)
 
 const app = express(); //initialized app
-const port = 3000; //initialized a gateway for the server to communicate through
+const port = process.env.PORT || 3000; //initialized a gateway for the server to communicate through
 const studentRoute = require('./routes/studentRoute')
 const financeRoute = require('./routes/financeRoute')
 require('dotenv').config();

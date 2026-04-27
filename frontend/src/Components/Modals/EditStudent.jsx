@@ -7,10 +7,10 @@ const EditStudent = (props) => {
     const handleUpdateStudent = async (e) => {
         e.preventDefault();
         try {
-            await axios.patch(`http://localhost:3000/students/${props.editingStudent._id}`, props.editFormData); //send the edit form data to backend
+            await axios.patch(`${process.env.NODE_URL}/students/${props.editingStudent._id}`, props.editFormData); //send the edit form data to backend
 
             //Refresh Data
-            const res = await axios.get('http://localhost:3000/students');
+            const res = await axios.get(`${process.env.NODE_URL}/students`);
             props.setStudents(res.data);
 
             props.setEditingStudent(null);
