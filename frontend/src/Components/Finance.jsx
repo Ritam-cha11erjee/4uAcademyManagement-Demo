@@ -4,7 +4,7 @@ import axios from 'axios'
 const Finance = () => {
 
     useEffect(() => {
-        axios.get(`${process.env.NODE_URL}/finances/financial-summary`).then(
+        axios.get(`${import.meta.env.VITE_API_URL}/finances/financial-summary`).then(
             res => setFinances(res.data)
         ).catch(err => console.log(err));
 
@@ -24,14 +24,14 @@ const Finance = () => {
         if (!monthYear) return alert("Please enter the month and year");
 
         try {
-            await axios.post(`${process.env.NODE_URL}/finances/update-monthly-stats`, {
+            await axios.post(`${import.meta.env.VITE_API_URL}/finances/update-monthly-stats`, {
                 monthYear,
                 adSpend: Number(adSpend),
                 miscExpenses: Number(miscExpenses)
             });
 
             //Refresh the table
-            const res = await axios.get(`${process.env.NODE_URL}/finances/financial-summary`);
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/finances/financial-summary`);
             setFinances(res.data);
             alert("Stats Updated!");
         } catch (err) {

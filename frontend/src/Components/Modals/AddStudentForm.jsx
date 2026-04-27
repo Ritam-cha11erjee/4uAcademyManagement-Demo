@@ -16,9 +16,9 @@ const AddStudentForm = () => {
         if (!newStudent.name) return alert("Please enter a name");
 
         try {
-            await axios.post(`${process.env.NODE_URL}/students/add-student`, newStudent);
+            await axios.post(`${import.meta.env.VITE_API_URL}/students/add-student`, newStudent);
 
-            const res = await axios.get(`${process.env.NODE_URL}/students`);
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/students`);
             setStudents(res.data); //update students state after adding new student
 
             //Reset the form
