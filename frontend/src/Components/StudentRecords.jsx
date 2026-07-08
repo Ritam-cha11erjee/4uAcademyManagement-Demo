@@ -23,7 +23,7 @@ const StudentRecords = (props) => {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/students`)
+                const response = await axios.get('http://localhost:3000/students')
                 setStudents(response.data) //on getting data, update state
                 setLoading(false)
             } catch (err) {

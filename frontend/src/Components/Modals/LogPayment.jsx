@@ -8,12 +8,12 @@ const LogPayment = (props) => {
         const amount = document.getElementById(`pay-amt-${student._id}`).value; //Got amount from the amount input element
 
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/students/${student._id}/pay`, {
+            await axios.post(`http://localhost:3000/students/${student._id}/pay`, {
                 amountPaid: Number(amount), //amount was a string as .value returns a string
                 dateOfPayment: date
             });
 
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/students`);
+            const res = await axios.get(`http://localhost:3000/students`);
             props.setStudents(res.data); //refresh student list
 
             //Reset & close payment Modal
